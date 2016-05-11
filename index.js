@@ -38,6 +38,8 @@ var WAITING_COUNTDOWN = 30;
 var START_COUNTDOWN = 20;
 var END_COUNTDOWN = 10;
 
+var startTimer = null;
+
 function updateUser(username, score, correct, wrong) {
     for(var i = 0; i < users.length; i++) {
         if(users[i].username == username) {
@@ -51,6 +53,7 @@ function updateUser(username, score, correct, wrong) {
 
 // Notify winner, start time till next round, update scores
 function endRound(user) {
+    clearTimeout(startTimer);
     phase = 3;
     usersWhoAnswered = [];
     if(user) {
@@ -93,7 +96,7 @@ function startRound() {
     io.emit('start-round', { currentProblem: currentProblem, solutions: solutions, round: round, MAX_ROUNDS: MAX_ROUNDS, countdown: START_COUNTDOWN });
 
     // start countdown if no one answers in time
-    setTimeout(function() {
+    startTimer = setTimeout(function() {
         if(roundWinner == null) {
             endRound();
         }

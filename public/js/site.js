@@ -13,6 +13,7 @@ $(function() {
     var currentProblem;
     var username;
     var clicked;
+    var startTimer = null;
 
     function renderProb(problem) {
         var prob = $("#problem");
@@ -187,7 +188,8 @@ $(function() {
     });
 
     function problemCountdown(countdown) {
-        setTimeout(function() {
+        clearTimeout(startTimer);
+        startTimer = setTimeout(function() {
             if(countdown < 10) {
                 $("#problem-time").text("0:0"+countdown);
             } else {
@@ -203,6 +205,7 @@ $(function() {
     socketio.on('start-round', function(data) {
         $("#waiting").hide();
         $("#end-round-wrapper").hide();
+        $("#problem-time").text("0:"+data.countdown);
         problemCountdown(data.countdown - 1);
         $("#problem-wrapper").show();
         $("#grid-wrapper").show();
@@ -231,6 +234,7 @@ $(function() {
     }
 
     socketio.on('end-round', function(data) {
+        clearTimeout(startTimer);
         // put stats at the top
         $("#problem-wrapper").hide();
         $("#grid-wrapper").hide();

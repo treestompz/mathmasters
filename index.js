@@ -15,6 +15,8 @@ app.get('/about', function(req, res) {
     res.sendFile(__dirname + "/public/templates/about.html");
 });
 
+console.log("App running on port 3000");
+
 // Array of user objects that are currently considered to be playing the game
 var users = [];
 var usersWhoAnswered = [];

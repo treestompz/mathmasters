@@ -23,8 +23,8 @@ var phase = 1;
 var waitingCountdownStarted = false;
 var waitingTimeLeft = null;
 
-var MAX_ROUNDS = 1;
-var WAITING_COUNTDOWN = 10;
+var MAX_ROUNDS = 10;
+var WAITING_COUNTDOWN = 30;
 var START_COUNTDOWN = 10;
 var END_COUNTDOWN = 10;
 
@@ -338,7 +338,7 @@ io.on('connection', function(socket) {
         if(currentAnswer == answer) {
             endRound(user);
             makeNoty(socket, "Your answer was correct!", "success");
-            io.emit("make-noty", username + " won the round!", "success");
+            io.emit("make-noty", {text: username + " won the round!", type: "success"});
             socket.emit('answer-response', { correct: true });
         } else {
             updateUser(username, -100, 0, 1);

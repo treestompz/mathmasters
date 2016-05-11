@@ -1,0 +1,33 @@
+.navbar {
+    margin-top: 20px;
+}
+
+.logo {
+    margin-top: -8px;
+    width: 250px;
+}
+
+.container {
+    text-align: center;
+}
+
+#problem {
+    font-size: 100px;
+}
+
+#time {
+    font-size: 50px;
+}
+
+#time-info {
+    font-size: 20px;
+}
+
+h1 img {
+    margin-top: -10px;
+    width: 400px;
+}
+
+#stats {
+    text-align: left;
+}

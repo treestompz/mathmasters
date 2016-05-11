@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Math Masters</title>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/paper/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        
+        <div class="container">
+
+            <!-- Static navbar -->
+             <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img class="img-responsive logo" src="img/logo.png"></a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <!-- <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Login</a></li>
+                        </ul> -->
+                    </div><!--/.nav-collapse -->
+                    </div><!--/.container-fluid -->
+                </nav>
+
+            <div style="display: none;" id="waiting">
+                <h1>Welcome to <img src="img/logo.png"></h1>
+                <h3 id="winners"></h3>
+                <h3 id="welcome-sub"></h3>
+                <button id="join-game" class="ui-btn ui-shadow">Click To Join Game</button>
+            </div>
+
+            <div style="display: none;" id="problem-wrapper">
+                <h1 id="problem"></h1>
+                <h1><span id="problem-time"></span> left to submit answer</h1>
+            </div>
+
+            <div id="grid-wrapper" class="row">
+                <div id="grid">
+
+                </div>
+            </div>
+
+            <div id="end-round-wrapper">
+                <h1 id="end-round-title"></h1>
+                <h1 id="round-winner"></h1>
+                <h1 id="end-round-time"></h1>
+            </div>
+
+            <div class="row" id="stats">
+                <h3>Players - <span id="player-count"></span> Rounds - <span id="rounds"></span></h3>
+                <table id="score" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Score</th>
+                            <th># Correct</th>
+                            <th># Wrong</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/packaged/jquery.noty.packaged.min.js"></script>
+        <script src="js/site.js"></script>
+    </body>
+</html>

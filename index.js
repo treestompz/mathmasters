@@ -7,6 +7,14 @@ var math = require('mathjs');
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + "/public/templates/index.html");
+});
+
+app.get('/about', function(req, res) {
+    res.sendFile(__dirname + "/public/templates/about.html");
+});
+
 // Array of user objects that are currently considered to be playing the game
 var users = [];
 var usersWhoAnswered = [];
@@ -25,7 +33,7 @@ var waitingTimeLeft = null;
 
 var MAX_ROUNDS = 10;
 var WAITING_COUNTDOWN = 30;
-var START_COUNTDOWN = 10;
+var START_COUNTDOWN = 20;
 var END_COUNTDOWN = 10;
 
 function updateUser(username, score, correct, wrong) {

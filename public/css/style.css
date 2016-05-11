@@ -31,3 +31,19 @@ h1 img {
 #stats {
     text-align: left;
 }
+
+#score {
+    font-size: 15px;
+}
+
+#card-button {
+    font-size: 30px;
+}
+
+.stack img {
+    width: 100px;
+}
+
+.about-text {
+    font-size: 15px;
+}

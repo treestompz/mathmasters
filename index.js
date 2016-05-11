@@ -102,12 +102,11 @@ function startRound() {
         }
     }, 1000 * START_COUNTDOWN);
 }
-var isCount = false;
+
 function waitingPhase(winners) {
     if(users.length < 2) {
         io.emit('waiting-phase', { countdown: -1, winners: winners });
     } else {
-
         if(waitingTimeLeft == null) {
             waitingTimeLeft = WAITING_COUNTDOWN;
         }
@@ -118,11 +117,7 @@ function waitingPhase(winners) {
         }
         // keep counting down
         else {
-            if(isCount) {
-                return;
-            }
             setTimeout(function() {
-                isCount = true;
                 waitingTimeLeft--;
                 console.log("Game starting in: " + waitingTimeLeft);
                 io.emit('waiting-phase', { countdown: waitingTimeLeft, winners: winners });

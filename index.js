@@ -118,11 +118,11 @@ function waitingPhase(winners) {
         }
         // keep counting down
         else {
-            if(!isCount) {
+            if(isCount) {
                 return;
             }
             setTimeout(function() {
-                isCount = false;
+                isCount = true;
                 waitingTimeLeft--;
                 console.log("Game starting in: " + waitingTimeLeft);
                 io.emit('waiting-phase', { countdown: waitingTimeLeft, winners: winners });

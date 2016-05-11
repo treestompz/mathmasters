@@ -96,7 +96,7 @@ $(function() {
 
 
     /* Socket.io */
-    var socketio = io.connect('http://localhost:3000');
+    var socketio = io.connect('http://'+location.hostname+':'+location.port+'');
 
     socketio.on('username-confirmed', function(data) {
         username = data.username;

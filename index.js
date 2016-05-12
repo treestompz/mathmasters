@@ -107,12 +107,14 @@ function waitingPhase(winners) {
     if(users.length < 2) {
         io.emit('waiting-phase', { countdown: -1, winners: winners });
     } else {
+        waitingCountdownStarted = true;
         if(waitingTimeLeft == null) {
             waitingTimeLeft = WAITING_COUNTDOWN;
         }
         // start the game
         if(waitingTimeLeft <= 0) {
             waitingTimeLeft = null;
+            waitingCountdownStarted = false;
             startRound();
         }
         // keep counting down
@@ -321,7 +323,9 @@ io.on('connection', function(socket) {
         console.log("Added user to game: " + username);
         socket.emit('username-confirmed', { username: username });
         io.emit('users-update', { users: users });
-        waitingPhase();
+        if(!waitingCountdownStarted) {
+            waitingPhase();
+        }
     });
 
     socket.on('answer', function(data) {

@@ -28,7 +28,7 @@ $(function() {
         var currRow;
         for(var i = 0; i < solutions.length; i++) {
             // new row
-            if(i % 3 == 0) {
+            if(i % 3 === 0) {
                 grid.append('<div id="row-' + i + '" class="row"></div>');
                 currRow = $('#row-'+i);
             }
@@ -55,7 +55,7 @@ $(function() {
                 label: 'Join Game',
                 action: function(ref) {
                     var username = $("#username-entry").val();
-                    if(username == "") {
+                    if(username === "") {
                         return;
                     }
                     socketio.emit('join-game', { username: username });
@@ -108,7 +108,7 @@ $(function() {
         console.log(data)
         var phase = data.phase;
         users = data.users;
-        if(phase == 1) {
+        if(phase === 1) {
             $("#waiting").show();
             renderUsers();
         }
@@ -120,7 +120,7 @@ $(function() {
 
     function isNewUser(username) {
         for(var i = 0; i < users.length; i++) {
-            if(users[i].username == username) {
+            if(users[i].username === username) {
                 return false;
             }
         }
@@ -164,7 +164,7 @@ $(function() {
         $("#end-round-wrapper").hide();
         console.log(countdown);
         // don't start countdown
-        if(countdown == -1) {
+        if(countdown === -1) {
             sub.text("Waiting for 2 or more players to start game countdown...");
         }
         // start countdown
@@ -247,7 +247,7 @@ $(function() {
             $("#round-winner").text("");
         }
         var countdown = data.countdown;
-        if(countdown == -1) {
+        if(countdown === -1) {
             $("#end-round-time").text("");
         } else {
             $("#end-round-time").text("0:0"+countdown + " left until new round starts!");

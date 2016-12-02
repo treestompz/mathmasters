@@ -42,7 +42,7 @@ var startTimer = null;
 
 function updateUser(username, score, correct, wrong) {
     for(var i = 0; i < users.length; i++) {
-        if(users[i].username == username) {
+        if(users[i].username === username) {
             users[i].score += score;
             users[i].correct += correct;
             users[i].wrong += wrong;
@@ -97,7 +97,7 @@ function startRound() {
 
     // start countdown if no one answers in time
     startTimer = setTimeout(function() {
-        if(roundWinner == null) {
+        if(roundWinner === null) {
             endRound();
         }
     }, 1000 * START_COUNTDOWN);
@@ -108,7 +108,7 @@ function waitingPhase(winners) {
         io.emit('waiting-phase', { countdown: -1, winners: winners });
     } else {
         waitingCountdownStarted = true;
-        if(waitingTimeLeft == null) {
+        if(waitingTimeLeft === null) {
             waitingTimeLeft = WAITING_COUNTDOWN;
         }
         // start the game
@@ -149,7 +149,7 @@ function endGame() {
 
     // find everyone who has that score
     for(var i = 0; i < users.length; i++) {
-        if(users[i].score == highestScore) {
+        if(users[i].score === highestScore) {
             winners.push(users[i]);
         }
     }
@@ -167,7 +167,7 @@ function genProblem() {
         prob += num + " ";
 
         // Don't append an op if we are on the last num
-        if(i == numOfInts - 1) {
+        if(i === numOfInts - 1) {
             break;
         }
 
@@ -270,7 +270,7 @@ function warning(socket, warning) {
 
 function isActiveUser(username) {
     for(var i = 0; i < users.length; i++) {
-        if(users[i].username == username) {
+        if(users[i].username === username) {
             return true;
         }
     }
@@ -279,7 +279,7 @@ function isActiveUser(username) {
 
 function getUser(username) {
     for(var i = 0; i < users.length; i++) {
-        if(users[i].username == username) {
+        if(users[i].username === username) {
             return users[i];
         }
     }
@@ -342,7 +342,7 @@ io.on('connection', function(socket) {
 
         // check if they answered already
         for(var i = 0; i < usersWhoAnswered.length; i++) {
-            if(usersWhoAnswered[i] == username) {
+            if(usersWhoAnswered[i] === username) {
                 warning(socket, "You have already submitted an answer for this round!");
                 return;
             }
@@ -351,8 +351,8 @@ io.on('connection', function(socket) {
         usersWhoAnswered.push(username);
 
         var user = getUser(username);
-        var answer = data.answer;
-        if(currentAnswer == answer) {
+        var answer = parseInt(data.answer);
+        if(currentAnswer === answer) {
             endRound(user);
             makeNoty(socket, "Your answer was correct!", "success");
             io.emit("make-noty", {text: username + " won the round!", type: "success"});
